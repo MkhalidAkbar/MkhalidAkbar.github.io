@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Muhammad Khalid Akbar — Portfolio</title>
+<style>
+  :root{
+    --bg:#0f0f10; --ink:#eaeaea; --muted:#b8b9bd; --line:#2a2b2e; --panel:#131416; --accent:#00bcd4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:system-ui, Arial, sans-serif; background:var(--bg); color:var(--ink)}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+
+  /* Header */
+  header{border:1px solid var(--line); margin:8px; padding:12px 0; background:transparent}
+  .header-inner{display:flex; align-items:center; justify-content:space-between}
+  .brand{font-weight:600; font-size:14px; opacity:.9}
+  nav a{margin-left:28px; font-size:14px; opacity:.9}
+  nav a:hover{color:var(--accent)}
+
+  /* Hero (two columns) */
+  .hero{border:1px solid var(--line); margin:14px 8px 0; background:var(--panel)}
+  .hero-inner{display:grid; grid-template-columns:1.4fr .9fr; padding:40px; gap:20px}
+  .intro{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color:var(--muted); line-height:1.6; white-space:pre-line;
+  }
+  .photo-col{display:flex; flex-direction:column; align-items:center; gap:14px}
+  .avatar{width:180px; height:180px; border-radius:50%; border:2px solid var(--ink); object-fit:cover; background:#222}
+  .fullname{font-weight:700; text-align:center; line-height:1.2}
+
+  /* Projects */
+  section#projects{margin:16px 8px 0}
+  .section-title{margin:0 0 8px 0; font-weight:600}
+  .proj-shell{border:1px solid var(--line); background:var(--panel)}
+  .tabs{display:flex; gap:18px; padding:14px 18px 0}
+  .tab{
+    padding:12px 20px 8px; color:#cfd2d6; border:1px solid var(--line); border-bottom:none;
+    background:transparent; cursor:pointer; font-size:14px; position:relative; top:1px;
+    clip-path:polygon(10px 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+  }
+  .tab.active{color:var(--ink); border-color:var(--accent); background:var(--panel)}
+  .pane{display:none; border-top:1px solid var(--line); padding:18px}
+  .pane.active{display:block}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:14px}
+  .card{border:1px solid var(--line); border-radius:10px; background:#111; padding:14px}
+  .card h4{margin:0 0 6px; font-size:16px}
+  .card p{margin:0; color:#cfd2d6; font-size:14px}
+  .links a{color:var(--accent); font-size:13px; margin-right:10px}
+
+  /* Contact */
+  section#contact{margin:16px 8px 24px}
+  .contact-box{border:1px solid var(--line); background:var(--panel); padding:14px}
+  .contact-grid{display:grid; gap:10px}
+  .contact-grid a{color:var(--accent)}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; padding:24px}
+    .avatar{width:150px; height:150px}
+    nav a{margin-left:18px}
+  }
+
+  /* === Modal base === */
+    .modal-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,.6);
+    display:none; align-items:center; justify-content:center; padding:20px; z-index:50;
+    }
+    .modal-backdrop.show{display:flex}
+    .modal{
+    width:min(980px, 96vw); max-height:90vh; overflow:auto;
+    background:#121315; color:#eaeaea; border:1px solid #2a2b2e; border-radius:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    }
+    .modal header{display:flex; align-items:start; justify-content:space-between; padding:18px 20px; border-bottom:1px solid #2a2b2e}
+    .modal h3{margin:0; font-size:20px}
+    .modal .close{background:transparent; border:0; color:#9aa0a6; font-size:22px; cursor:pointer}
+    .modal .body{padding:18px 20px; display:grid; grid-template-columns:320px 1fr; gap:18px}
+    .modal .meta{font-size:14px; color:#cfd2d6; line-height:1.6}
+    .badge{display:inline-block; border:1px solid #2a2b2e; padding:4px 8px; border-radius:999px; font-size:12px; margin:4px 6px 0 0}
+    .gallery-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px}
+    .gallery-grid img{width:100%; height:120px; object-fit:cover; border:1px solid #2a2b2e; border-radius:8px; cursor:pointer}
+
+    /* Lightbox for clicking an image inside modal */
+    .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:60}
+    .lightbox.show{display:flex}
+    .lightbox img{max-width:92vw; max-height:90vh; border:1px solid #444; border-radius:6px}
+    .lightbox .x{position:absolute; top:14px; right:18px; background:transparent; border:0; color:#eee; font-size:28px; cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="brand">Muhammad Khalid Akbar</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home" class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="intro">
+Specializing in laptop & PC repair, custom builds,
+and workflow automation. I blend hardware
+expertise with Python & n8n to deliver
+reliable, efficient solutions.
+      </div>
+
+      <div class="photo-col">
+        <!-- Ganti src berikut -->
+        <img class="avatar" src="bg_black.png" alt="Profile Photo">
+        <div class="fullname">Muhammad Khalid<br>Akbar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h3 class="section-title">Projects</h3>
+
+    <div class="proj-shell">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-target="all">All</button>
+        <button class="tab" data-target="pc">PC Builds</button>
+        <button class="tab" data-target="software">Software</button>
+        <button class="tab" data-target="automation">Automation</button>
+      </div>
+
+      <!-- Content area -->
+      <div class="pane active" id="pane-all">
+        <div class="grid">
+          <div class="card">
+            <h4>Rattan Case PC — Store Display</h4>
+            <p>Custom wooden PC case with rattan front; airflow & cable management tuned for retail showcase.</p>
+            <div class="links">
+                <a href="#" class="open-modal" data-modal-target="modal-rattan">Gallery</a>
+                <a href="#">Write-up</a>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Laptop Tester App</h4>
+            <p>Python GUI to test keyboard, battery, storage health, Wi-Fi, and screen. Used in service workflow.</p>
+            <div class="links"><a href="#">GitHub</a><a href="#">Download</a></div>
+          </div>
+          <div class="card">
+            <h4>n8n Image Metadata Pipeline</h4>
+            <p>Telegram → Sheets → Dropbox automation for captions → title/keywords + asset upload.</p>
+            <div class="links"><a href="#">Diagram</a><a href="#">Demo</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-pc">
+        <div class="grid">
+          <div class="card"><h4>15x Daily Builds</h4><p>QC checklist + stress tests; consistent results; 5–10% OC.</p></div>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-software">
+        <div class="grid">
+          <div class="card"><h4>Laptop Tester — UI Revamp</h4><p>Unified theme, error handling, and PDF export.</p></div>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-automation">
+        <div class="grid">
+          <div class="card"><h4>Telegram → Sheets → Dropbox</h4><p>Auto-parse captions, tag, and store with clean filenames.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h3 class="section-title">Contact</h3>
+    <div class="contact-box">
+      <div class="contact-grid">
+        <div>Email: <a href="mailto:khaska@example.com">khaska@example.com</a></div>
+        <div>WhatsApp: <a href="https://wa.me/628xxxxxxxxxx" target="_blank">+62 8xx-xxxx-xxxx</a></div>
+        <div>LinkedIn: <a href="#" target="_blank">linkedin.com/in/khalid</a></div>
+        <div>GitHub: <a href="#" target="_blank">github.com/khaska</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Tabs logic
+  const tabs = document.querySelectorAll('.tab');
+  const panes = {
+    all: document.getElementById('pane-all'),
+    pc: document.getElementById('pane-pc'),
+    software: document.getElementById('pane-software'),
+    automation: document.getElementById('pane-automation')
+  };
+  function showPane(key){
+    document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    (panes[key]||panes.all).classList.add('active');
+    document.querySelector(`.tab[data-target="${key}"]`).classList.add('active');
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>showPane(t.dataset.target)));
+</script>
+
+</body>
+</html>
