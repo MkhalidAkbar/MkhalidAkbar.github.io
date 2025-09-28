@@ -108,11 +108,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="intro">
-Specializing in laptop & PC repair, custom builds,
-and workflow automation. I blend hardware
-expertise with Python & n8n to deliver
-reliable, efficient solutions.
+      <div class="intro" >
+Computer technician with 3+ years of experience in hardware and software, specializing in laptop and PC repair, custom builds, and workflow automation. Skilled in assembling high-performance PCs, overclocking, troubleshooting, and providing technical support for laptops and computers. Currently developing a personal computer service business to enhance technical expertise and build strong client relationships. By blending hardware expertise with Python and n8n automation, I deliver reliable, efficient, and innovative solutions — committed to both technical excellence and customer satisfaction.
       </div>
 
       <div class="photo-col">
@@ -185,13 +182,60 @@ reliable, efficient solutions.
     <h3 class="section-title">Contact</h3>
     <div class="contact-box">
       <div class="contact-grid">
-        <div>Email: <a href="mailto:khaska@example.com">khaska@example.com</a></div>
-        <div>WhatsApp: <a href="https://wa.me/628xxxxxxxxxx" target="_blank">+62 8xx-xxxx-xxxx</a></div>
-        <div>LinkedIn: <a href="#" target="_blank">linkedin.com/in/khalid</a></div>
-        <div>GitHub: <a href="#" target="_blank">github.com/khaska</a></div>
+        <div>Email: <a href="mailto:khalidstrife.com">khalidstrife.com</a></div>
+        <div>WhatsApp: <a href="https://wa.me/6289668998180" target="_blank">+62 896-6899-8180</a></div>
+        <!-- <div>LinkedIn: <a href="#" target="_blank">linkedin.com/in/khalid</a></div> -->
+        <div>GitHub: <a href="https://github.com/MkhalidAkbar" target="_blank">https://github.com/MkhalidAkbar</a></div>
       </div>
     </div>
   </section>
+
+<!-- Modal: Rattan Case PC -->
+<div class="modal-backdrop" id="modal-rattan" role="dialog" aria-modal="true" aria-labelledby="modal-rattan-title">
+  <div class="modal">
+    <header>
+      <h3 id="modal-rattan-title">Rattan Case PC — Store Display</h3>
+      <button class="close" aria-label="Close">&times;</button>
+    </header>
+
+    <div class="body">
+      <!-- Left meta/description -->
+      <div class="meta">
+        <p>Custom wooden PC case with rattan front panel designed for retail display. Focus on thermals, cable management, and clean aesthetic.</p>
+        <div>
+          <span class="badge">3D Design</span>
+          <span class="badge">Woodwork</span>
+          <span class="badge">Airflow Tuning</span>
+        </div>
+        <p style="margin-top:10px">
+          <strong>Specs highlight:</strong><br>
+          Ryzen 5 / Tower cooler • RTX mid-range • Mesh intake with hidden dust filter • PSU shroud custom.
+        </p>
+        <p><a href="#" style="color:#00bcd4">Full write-up</a></p>
+      </div>
+
+      <!-- Right gallery -->
+      <div>
+        <div class="gallery-grid">
+          <!-- Ganti src berikut dengan file kamu -->
+          <img src="img/rattan-1.jpg" alt="Rattan build 1">
+          <img src="img/rattan-2.jpg" alt="Rattan build 2">
+          <img src="img/rattan-3.jpg" alt="Rattan build 3">
+          <img src="img/rattan-4.jpg" alt="Rattan build 4">
+          <img src="img/rattan-5.jpg" alt="Rattan build 5">
+          <img src="img/rattan-6.jpg" alt="Rattan build 6">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox (shared) -->
+<div class="lightbox" id="lightbox">
+  <button class="x" aria-label="Close">&times;</button>
+  <img src="" alt="preview">
+</div>
+
 </main>
 
 <script>
@@ -210,6 +254,47 @@ reliable, efficient solutions.
     document.querySelector(`.tab[data-target="${key}"]`).classList.add('active');
   }
   tabs.forEach(t=>t.addEventListener('click',()=>showPane(t.dataset.target)));
+
+  // ===== Modal open/close =====
+  const openers = document.querySelectorAll('.open-modal');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+
+  function openModal(id){
+    const m = document.getElementById(id);
+    if(!m) return;
+    m.classList.add('show');
+    // Close handlers
+    const closeBtn = m.querySelector('.close');
+    const onBackdrop = (e)=>{ if(e.target === m) closeModal(m); };
+    const onEsc = (e)=>{ if(e.key === 'Escape') closeModal(m); };
+    closeBtn.addEventListener('click', ()=>closeModal(m), {once:true});
+    m.addEventListener('click', onBackdrop, {once:true});
+    document.addEventListener('keydown', onEsc, {once:true});
+    // Setup lightbox on images
+    m.querySelectorAll('.gallery-grid img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        lightboxImg.src = img.src;
+        lightbox.classList.add('show');
+      });
+    });
+  }
+  function closeModal(m){
+    m.classList.remove('show');
+  }
+
+  openers.forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const id = btn.dataset.modalTarget;
+      openModal(id);
+    });
+  });
+
+  // Lightbox close
+  lightbox.querySelector('.x').addEventListener('click', ()=>lightbox.classList.remove('show'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('show'); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('show'); });
 </script>
 
 </body>
