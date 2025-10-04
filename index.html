@@ -1,301 +1,375 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Muhammad Khalid Akbar — Portfolio</title>
-<style>
-  :root{
-    --bg:#0f0f10; --ink:#eaeaea; --muted:#b8b9bd; --line:#2a2b2e; --panel:#131416; --accent:#00bcd4;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Laptop & PC – Khaska | Jakarta & Bekasi</title>
+  <meta name="description" content="Service laptop & PC di Jakarta & Bekasi. Perbaikan, upgrade, rakit custom. Cepat, rapi, bergaransi. Booking via WhatsApp." />
+  <link rel="icon" href="/favicon.ico" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Service Laptop & PC – Khaska" />
+  <meta property="og:description" content="Perbaikan, upgrade, rakit custom. Booking via WhatsApp." />
+  <meta property="og:url" content="https://mkhalidakbar.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://mkhalidakbar.github.io/og-cover.jpg" />
+
+  <!-- LocalBusiness Schema (edit phone/email if needed) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Khaska – Service Laptop & PC",
+    "image": "https://mkhalidakbar.github.io/og-cover.jpg",
+    "url": "https://mkhalidakbar.github.io/",
+    "telephone": "+62 896-6899-8180",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jakarta & Bekasi",
+      "addressCountry": "ID"
+    },
+    "areaServed": ["Jakarta", "Bekasi", "Depok", "Tangerang"],
+    "priceRange": "$$",
+    "sameAs": [
+      "https://wa.me/6289668998180"
+    ]
   }
-  *{box-sizing:border-box}
-  body{margin:0; font-family:system-ui, Arial, sans-serif; background:var(--bg); color:var(--ink)}
-  a{color:inherit; text-decoration:none}
-  .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+  </script>
 
-  /* Header */
-  header{border:1px solid var(--line); margin:8px; padding:12px 0; background:transparent}
-  .header-inner{display:flex; align-items:center; justify-content:space-between}
-  .brand{font-weight:600; font-size:14px; opacity:.9}
-  nav a{margin-left:28px; font-size:14px; opacity:.9}
-  nav a:hover{color:var(--accent)}
-
-  /* Hero (two columns) */
-  .hero{border:1px solid var(--line); margin:14px 8px 0; background:var(--panel)}
-  .hero-inner{display:grid; grid-template-columns:1.4fr .9fr; padding:40px; gap:20px}
-  .intro{
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    color:var(--muted); line-height:1.6; white-space:pre-line;
-  }
-  .photo-col{display:flex; flex-direction:column; align-items:center; gap:14px}
-  .avatar{width:180px; height:180px; border-radius:50%; border:2px solid var(--ink); object-fit:cover; background:#222}
-  .fullname{font-weight:700; text-align:center; line-height:1.2}
-
-  /* Projects */
-  section#projects{margin:16px 8px 0}
-  .section-title{margin:0 0 8px 0; font-weight:600}
-  .proj-shell{border:1px solid var(--line); background:var(--panel)}
-  .tabs{display:flex; gap:18px; padding:14px 18px 0}
-  .tab{
-    padding:12px 20px 8px; color:#cfd2d6; border:1px solid var(--line); border-bottom:none;
-    background:transparent; cursor:pointer; font-size:14px; position:relative; top:1px;
-    clip-path:polygon(10px 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
-  }
-  .tab.active{color:var(--ink); border-color:var(--accent); background:var(--panel)}
-  .pane{display:none; border-top:1px solid var(--line); padding:18px}
-  .pane.active{display:block}
-  .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:14px}
-  .card{border:1px solid var(--line); border-radius:10px; background:#111; padding:14px}
-  .card h4{margin:0 0 6px; font-size:16px}
-  .card p{margin:0; color:#cfd2d6; font-size:14px}
-  .links a{color:var(--accent); font-size:13px; margin-right:10px}
-
-  /* Contact */
-  section#contact{margin:16px 8px 24px}
-  .contact-box{border:1px solid var(--line); background:var(--panel); padding:14px}
-  .contact-grid{display:grid; gap:10px}
-  .contact-grid a{color:var(--accent)}
-
-  /* Responsive */
-  @media (max-width:900px){
-    .hero-inner{grid-template-columns:1fr; padding:24px}
-    .avatar{width:150px; height:150px}
-    nav a{margin-left:18px}
-  }
-
-  /* === Modal base === */
-    .modal-backdrop{
-    position:fixed; inset:0; background:rgba(0,0,0,.6);
-    display:none; align-items:center; justify-content:center; padding:20px; z-index:50;
+  <style>
+    :root{
+      --bg:#0d0f14;         /* very dark blue/black */
+      --card:#121621;       /* card surface */
+      --muted:#98a2b3;      /* subtle text */
+      --text:#e6e9ef;       /* main text */
+      --brand:#4f46e5;      /* indigo */
+      --brand-2:#22c55e;    /* green for trust */
+      --danger:#ef4444;     /* red accent */
+      --ring: 0 0 0 3px color-mix(in lab, var(--brand) 25%, transparent);
     }
-    .modal-backdrop.show{display:flex}
-    .modal{
-    width:min(980px, 96vw); max-height:90vh; overflow:auto;
-    background:#121315; color:#eaeaea; border:1px solid #2a2b2e; border-radius:12px;
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
-    }
-    .modal header{display:flex; align-items:start; justify-content:space-between; padding:18px 20px; border-bottom:1px solid #2a2b2e}
-    .modal h3{margin:0; font-size:20px}
-    .modal .close{background:transparent; border:0; color:#9aa0a6; font-size:22px; cursor:pointer}
-    .modal .body{padding:18px 20px; display:grid; grid-template-columns:320px 1fr; gap:18px}
-    .modal .meta{font-size:14px; color:#cfd2d6; line-height:1.6}
-    .badge{display:inline-block; border:1px solid #2a2b2e; padding:4px 8px; border-radius:999px; font-size:12px; margin:4px 6px 0 0}
-    .gallery-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px}
-    .gallery-grid img{width:100%; height:120px; object-fit:cover; border:1px solid #2a2b2e; border-radius:8px; cursor:pointer}
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
 
-    /* Lightbox for clicking an image inside modal */
-    .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:60}
-    .lightbox.show{display:flex}
-    .lightbox img{max-width:92vw; max-height:90vh; border:1px solid #444; border-radius:6px}
-    .lightbox .x{position:absolute; top:14px; right:18px; background:transparent; border:0; color:#eee; font-size:28px; cursor:pointer}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    .grid{display:grid; gap:16px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; font-weight:600; border:1px solid transparent;}
+    .btn:focus{outline:none; box-shadow:var(--ring)}
+    .btn.primary{background:var(--brand);}
+    .btn.ghost{background:transparent; border-color:#2a3244}
+    .btn.success{background:var(--brand-2)}
+    .tag{display:inline-block; font-size:12px; color:#b9c2d0; border:1px solid #283146; padding:6px 10px; border-radius:999px}
 
-</style>
+    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(160%) blur(8px); background:color-mix(in lab, var(--bg) 85%, transparent); border-bottom:1px solid #1d2332}
+    header .wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    nav a{padding:8px 12px; border-radius:10px}
+    nav a:hover{background:#1a2030}
+
+    .hero{padding:56px 0 28px}
+    .hero .headline{display:flex; align-items:center; gap:8px; color:#a6b0c2; font-weight:600}
+    .hero h1{font-size:clamp(28px, 5vw, 44px); line-height:1.1; margin:10px 0}
+    .hero p{color:#b7c0d1; font-size:18px; max-width:60ch}
+    .hero .cta{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+
+    .stats{margin-top:20px; display:flex; gap:18px; flex-wrap:wrap}
+    .stats .kpi{background:linear-gradient(180deg,#151b2a,#101521); border:1px solid #1f2638; padding:12px 14px; border-radius:14px}
+    .kpi strong{font-size:18px}
+    .kpi span{display:block; color:#93a0b6; font-size:12px}
+
+    .section{padding:36px 0}
+    .section h2{font-size:clamp(22px, 4vw, 32px); margin:0 0 12px}
+    .muted{color:var(--muted)}
+
+    .cards{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:var(--card); border:1px solid #1c2231; padding:16px; border-radius:16px}
+    .card h3{margin:0 0 6px; font-size:18px}
+    .price{margin-top:6px; display:flex; align-items:baseline; gap:6px}
+    .price strong{font-size:20px}
+
+    .how{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .how .step{background:var(--card); border:1px solid #1c2231; padding:16px; border-radius:16px}
+
+    .projects .proj{background:linear-gradient(180deg,#151b2a,#101521); border:1px solid #1f2638; border-radius:16px; overflow:hidden}
+    .proj .body{padding:14px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    .testi{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .quote{background:var(--card); border:1px solid #1c2231; padding:16px; border-radius:16px; font-size:14px}
+    .quote .by{margin-top:8px; color:#a7b3c8}
+
+    .faq details{background:var(--card); border:1px solid #1c2231; padding:14px 16px; border-radius:14px}
+    .faq details+details{margin-top:10px}
+    .faq summary{cursor:pointer; font-weight:600}
+
+    footer{border-top:1px solid #1d2332; padding:24px 0; color:#a3aec2}
+    .footer-flex{display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:center}
+    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:color-mix(in lab, black 60%, transparent); z-index:50}
+    .modal.open{display:flex}
+    .modal .dialog{width:min(900px, 92%); background:var(--card); border:1px solid #1c2231; border-radius:16px; overflow:hidden}
+    .dialog header{position:relative; backdrop-filter:none; background:transparent; border-bottom:1px solid #1c2231}
+    .dialog header .wrap{padding:12px 16px}
+    .dialog .content{padding:16px}
+    .close{appearance:none; border:none; background:#1c2231; color:#c9d3e8; border-radius:10px; padding:6px 10px; cursor:pointer}
+
+    /* Utilities */
+    .center{display:grid; place-items:center}
+    .right{margin-left:auto}
+    .mt-8{margin-top:8px}
+    .mt-12{margin-top:12px}
+    .mt-16{margin-top:16px}
+    .mt-20{margin-top:20px}
+    .pill{font-size:12px; background:#162033; border:1px solid #22304a; color:#b8c3d8; padding:6px 10px; border-radius:999px}
+  </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap header-inner">
-    <div class="brand">Muhammad Khalid Akbar</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="home" class="wrap">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="intro" >
-Computer technician with 3+ years of experience in hardware and software, specializing in laptop and PC repair, custom builds, and workflow automation. Skilled in assembling high-performance PCs, overclocking, troubleshooting, and providing technical support for laptops and computers. Currently developing a personal computer service business to enhance technical expertise and build strong client relationships. By blending hardware expertise with Python and n8n automation, I deliver reliable, efficient, and innovative solutions — committed to both technical excellence and customer satisfaction.
+  <header>
+    <div class="container wrap">
+      <div style="display:flex; align-items:center; gap:10px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M6 7v10a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7" stroke="#a6b0c2" stroke-width="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#4f46e5" stroke-width="1.5"/></svg>
+        <strong>Khaska Service</strong>
+        <span class="pill">Jakarta & Bekasi</span>
       </div>
-
-      <div class="photo-col">
-        <!-- Ganti src berikut -->
-        <img class="avatar" src="bg_black.png" alt="Profile Photo">
-        <div class="fullname">Muhammad Khalid<br>Akbar</div>
-      </div>
+      <nav>
+        <a href="#services">Layanan</a>
+        <a href="#how">Proses</a>
+        <a href="#projects">Projects</a>
+        <a href="#testi">Testimoni</a>
+        <a href="#contact">Kontak</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h3 class="section-title">Projects</h3>
-
-    <div class="proj-shell">
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab active" data-target="all">All</button>
-        <button class="tab" data-target="pc">PC Builds</button>
-        <button class="tab" data-target="software">Software</button>
-        <button class="tab" data-target="automation">Automation</button>
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="headline"><span class="tag">3+ Tahun • Technical PC/Laptop</span></div>
+      <h1>Service Laptop & PC. Cepat, rapi, bergaransi.</h1>
+      <p>Perbaikan, upgrade, dan rakit custom untuk kerja & gaming. Diagnosis masuk akal, komunikasi jelas, hasil bersih—tanpa drama.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://wa.me/6289668998180?text=Halo%20Khaska,%20saya%20mau%20servis%20[laptop/pc].%20Keluhan:%20...%20Lokasi:%20..." target="_blank" rel="noopener">WhatsApp Sekarang</a>
+        <a class="btn ghost" href="#services">Lihat Layanan & Harga</a>
       </div>
+      <div class="stats">
+        <div class="kpi"><strong>300+</strong><span>Unit ditangani</span></div>
+        <div class="kpi"><strong>1–3 hari</strong><span>Estimasi selesai</span></div>
+        <div class="kpi"><strong>14 hari</strong><span>Garansi pekerjaan</span></div>
+      </div>
+    </section>
 
-      <!-- Content area -->
-      <div class="pane active" id="pane-all">
-        <div class="grid">
-          <div class="card">
-            <h4>Rattan Case PC — Store Display</h4>
-            <p>Custom wooden PC case with rattan front; airflow & cable management tuned for retail showcase.</p>
-            <div class="links">
-                <a href="#" class="open-modal" data-modal-target="modal-rattan">Gallery</a>
-                <a href="#">Write-up</a>
+    <!-- SERVICES -->
+    <section id="services" class="section container">
+      <h2>Layanan & Harga Mulai</h2>
+      <p class="muted">Harga bergantung model & kondisi. Gratis konsultasi via WhatsApp.</p>
+      <div class="grid cards mt-16">
+        <div class="card">
+          <h3>Diagnosa & Konsultasi</h3>
+          <p>Analisa masalah + opsi solusi. Fee nol bila lanjut servis.</p>
+          <div class="price"><strong>Rp0</strong><span class="muted">(lanjut servis)</span></div>
+        </div>
+        <div class="card">
+          <h3>Install Ulang + Driver</h3>
+          <p>Windows + driver + update + basic apps. Data aman.</p>
+          <div class="price"><strong>Rp150k</strong><span class="muted">mulai</span></div>
+        </div>
+        <div class="card">
+          <h3>Upgrade SSD / RAM</h3>
+          <p>Rekomendasi part + pemasangan + verifikasi performa.</p>
+          <div class="price"><strong>Rp100k</strong><span class="muted">jasa</span></div>
+        </div>
+        <div class="card">
+          <h3>Thermal Cleaning & Repaste</h3>
+          <p>Pembersihan menyeluruh + thermal paste berkualitas.</p>
+          <div class="price"><strong>Rp150k</strong><span class="muted">mulai</span></div>
+        </div>
+        <div class="card">
+          <h3>Perbaikan Umum</h3>
+          <p>Keyboard, layar, touchpad, baterai, port, Wi‑Fi, dll.</p>
+          <div class="price"><strong>Quote</strong><span class="muted">hubungi WA</span></div>
+        </div>
+      </div>
+      <div class="mt-16">
+        <a class="btn success" href="https://wa.me/6289668998180?text=Halo%20Khaska,%20mau%20booking%20servis.%20Tipe:%20...%20Keluhan:%20..." target="_blank" rel="noopener">Booking via WhatsApp</a>
+        <span class="muted" style="margin-left:8px">Area: Jakarta, Bekasi (bisa on‑site by request)</span>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section container">
+      <h2>Proses Kerja</h2>
+      <div class="grid how mt-12">
+        <div class="step">
+          <h3>1) Konsultasi</h3>
+          <p>Ceritakan keluhan, foto/video gejala lebih membantu.</p>
+        </div>
+        <div class="step">
+          <h3>2) Diagnosa</h3>
+          <p>Cek menyeluruh + estimasi biaya. Transparan—kamu pilih opsi.</p>
+        </div>
+        <div class="step">
+          <h3>3) Eksekusi</h3>
+          <p>Pengerjaan rapi, update progress. Performa diuji ulang.</p>
+        </div>
+        <div class="step">
+          <h3>4) Serah Terima</h3>
+          <p>Quality control + panduan perawatan. Garansi pekerjaan 14 hari.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS / PROOF -->
+    <section id="projects" class="section container projects">
+      <h2>Project & Alat Bantu (Proof of Work)</h2>
+      <p class="muted">Beberapa proyek yang menunjang workflow servis.</p>
+      <div class="grid cards mt-16">
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1280&auto=format&fit=crop" alt="Laptop on desk" />
+          <div class="body">
+            <h3>Laptop Tester App (Python)</h3>
+            <p>GUI untuk tes keyboard, baterai, storage, Wi‑Fi, layar. Mempercepat QC.</p>
+            <div class="actions mt-12">
+              <a class="btn" href="https://github.com/MkhalidAkbar" target="_blank" rel="noopener">Lihat Kode</a>
+              <button class="btn ghost" data-open="modal-lt">Demo</button>
             </div>
           </div>
-          <div class="card">
-            <h4>Laptop Tester App</h4>
-            <p>Python GUI to test keyboard, battery, storage health, Wi-Fi, and screen. Used in service workflow.</p>
-            <div class="links"><a href="#">GitHub</a><a href="#">Download</a></div>
+        </article>
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=1280&auto=format&fit=crop" alt="Custom PC case" />
+          <div class="body">
+            <h3>Rattan Case PC – Store Display</h3>
+            <p>Desain casing kayu + rotan untuk identitas visual toko.</p>
+            <div class="actions mt-12">
+              <button class="btn" data-open="modal-rc">Gallery</button>
+              <a class="btn ghost" href="#" aria-disabled="true">Write‑up</a>
+            </div>
           </div>
-          <div class="card">
-            <h4>n8n Image Metadata Pipeline</h4>
-            <p>Telegram → Sheets → Dropbox automation for captions → title/keywords + asset upload.</p>
-            <div class="links"><a href="#">Diagram</a><a href="#">Demo</a></div>
+        </article>
+        <article class="proj">
+          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1280&auto=format&fit=crop" alt="Automation flow" />
+          <div class="body">
+            <h3>n8n Automation – Metadata & Logs</h3>
+            <p>Alur otomatisasi (Telegram → Sheets → Dropbox) untuk dokumentasi servis.</p>
+            <div class="actions mt-12">
+              <a class="btn" href="#" aria-disabled="true">Diagram</a>
+              <a class="btn ghost" href="#" aria-disabled="true">Write‑up</a>
+            </div>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTI -->
+    <section id="testi" class="section container">
+      <h2>Testimoni</h2>
+      <div class="grid testi mt-16">
+        <div class="quote">“Laptop kantor saya sering freeze. Selesai 2 hari, sekarang ngebut. Komunikasi jelas.”<div class="by">— Dwi • ASUS VivoBook</div></div>
+        <div class="quote">“Upgrade SSD + repaste. Suhu turun banyak, game lebih stabil.”<div class="by">— Reza • MSI GF63</div></div>
+        <div class="quote">“Install ulang + beresin driver. Semua aplikasi kerja jalan.”<div class="by">— Nisa • Lenovo ThinkPad</div></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section container faq">
+      <h2>Pertanyaan Umum</h2>
+      <details class="mt-12"><summary>Apakah ada garansi?</summary><p class="mt-8 muted">Ya, garansi pekerjaan 14 hari untuk kasus yang sama. Kerusakan fisik baru/air tidak termasuk.</p></details>
+      <details><summary>Pickup/antar tersedia?</summary><p class="mt-8 muted">Bisa by request untuk area Jakarta & Bekasi (ada biaya).</p></details>
+      <details><summary>Butuh DP?</summary><p class="mt-8 muted">Untuk parts khusus/mahal, DP diperlukan sebelum pemesanan.</p></details>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2>Kontak</h2>
+      <div class="grid cards mt-16" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p class="muted">Fast response</p>
+          <a class="btn success mt-12" href="https://wa.me/6289668998180?text=Halo%20Khaska,%20mau%20servis%20[laptop/pc]" target="_blank" rel="noopener">Chat Sekarang</a>
+        </div>
+        <div class="card">
+          <h3>Email</h3>
+          <p class="muted">(Ganti ke email utama kamu)</p>
+          <a class="btn ghost mt-12" href="mailto:mkhalidakbar@gmail.com">mkhalidakbar@gmail.com</a>
+        </div>
+        <div class="card">
+          <h3>Jam Operasional</h3>
+          <p class="muted">Senin–Sabtu • 09.00–18.00 WIB</p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="pane" id="pane-pc">
-        <div class="grid">
-          <div class="card"><h4>15x Daily Builds</h4><p>QC checklist + stress tests; consistent results; 5–10% OC.</p></div>
-        </div>
-      </div>
-
-      <div class="pane" id="pane-software">
-        <div class="grid">
-          <div class="card"><h4>Laptop Tester — UI Revamp</h4><p>Unified theme, error handling, and PDF export.</p></div>
-        </div>
-      </div>
-
-      <div class="pane" id="pane-automation">
-        <div class="grid">
-          <div class="card"><h4>Telegram → Sheets → Dropbox</h4><p>Auto-parse captions, tag, and store with clean filenames.</p></div>
-        </div>
+  <footer>
+    <div class="container footer-flex">
+      <div>© <span id="y"></span> Khaska – Service Laptop & PC</div>
+      <div class="foot-links">
+        <a href="#services">Layanan</a>
+        <a href="#how">Proses</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Kontak</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h3 class="section-title">Contact</h3>
-    <div class="contact-box">
-      <div class="contact-grid">
-        <div>Email: <a href="mailto:khalidstrife.com">khalidstrife.com</a></div>
-        <div>WhatsApp: <a href="https://wa.me/6289668998180" target="_blank">+62 896-6899-8180</a></div>
-        <!-- <div>LinkedIn: <a href="#" target="_blank">linkedin.com/in/khalid</a></div> -->
-        <div>GitHub: <a href="https://github.com/MkhalidAkbar" target="_blank">https://github.com/MkhalidAkbar</a></div>
+  <!-- MODALS -->
+  <div class="modal" id="modal-rc" aria-hidden="true" role="dialog">
+    <div class="dialog">
+      <header>
+        <div class="wrap container" style="padding:10px 16px">
+          <strong>Rattan Case PC — Gallery</strong>
+          <button class="close right" data-close>Close</button>
+        </div>
+      </header>
+      <div class="content">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px">
+          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800&auto=format&fit=crop" alt="Rattan PC angle 1" />
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop" alt="Rattan PC angle 2" />
+          <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800&auto=format&fit=crop" alt="Rattan PC detail" />
+        </div>
+        <p class="muted mt-16">Material: kayu solid + rotan • Airflow: front mesh • Tujuan: identitas visual toko.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-<!-- Modal: Rattan Case PC -->
-<div class="modal-backdrop" id="modal-rattan" role="dialog" aria-modal="true" aria-labelledby="modal-rattan-title">
-  <div class="modal">
-    <header>
-      <h3 id="modal-rattan-title">Rattan Case PC — Store Display</h3>
-      <button class="close" aria-label="Close">&times;</button>
-    </header>
-
-    <div class="body">
-      <!-- Left meta/description -->
-      <div class="meta">
-        <p>Custom wooden PC case with rattan front panel designed for retail display. Focus on thermals, cable management, and clean aesthetic.</p>
-        <div>
-          <span class="badge">3D Design</span>
-          <span class="badge">Woodwork</span>
-          <span class="badge">Airflow Tuning</span>
+  <div class="modal" id="modal-lt" aria-hidden="true" role="dialog">
+    <div class="dialog">
+      <header>
+        <div class="wrap container" style="padding:10px 16px">
+          <strong>Laptop Tester App (Demo)</strong>
+          <button class="close right" data-close>Close</button>
         </div>
-        <p style="margin-top:10px">
-          <strong>Specs highlight:</strong><br>
-          Ryzen 5 / Tower cooler • RTX mid-range • Mesh intake with hidden dust filter • PSU shroud custom.
-        </p>
-        <p><a href="#" style="color:#00bcd4">Full write-up</a></p>
-      </div>
-
-      <!-- Right gallery -->
-      <div>
-        <div class="gallery-grid">
-          <!-- Ganti src berikut dengan file kamu -->
-          <img src="img/rattan-1.jpg" alt="Rattan build 1">
-          <img src="img/rattan-2.jpg" alt="Rattan build 2">
-          <img src="img/rattan-3.jpg" alt="Rattan build 3">
-          <img src="img/rattan-4.jpg" alt="Rattan build 4">
-          <img src="img/rattan-5.jpg" alt="Rattan build 5">
-          <img src="img/rattan-6.jpg" alt="Rattan build 6">
+      </header>
+      <div class="content">
+        <p class="muted">Demo placeholder. Tambahkan GIF/Video uji keyboard, baterai, storage, dll.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Laptop Tester Screenshot 1" />
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Laptop Tester Screenshot 2" />
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Lightbox (shared) -->
-<div class="lightbox" id="lightbox">
-  <button class="x" aria-label="Close">&times;</button>
-  <img src="" alt="preview">
-</div>
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-</main>
-
-<script>
-  // Tabs logic
-  const tabs = document.querySelectorAll('.tab');
-  const panes = {
-    all: document.getElementById('pane-all'),
-    pc: document.getElementById('pane-pc'),
-    software: document.getElementById('pane-software'),
-    automation: document.getElementById('pane-automation')
-  };
-  function showPane(key){
-    document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    (panes[key]||panes.all).classList.add('active');
-    document.querySelector(`.tab[data-target="${key}"]`).classList.add('active');
-  }
-  tabs.forEach(t=>t.addEventListener('click',()=>showPane(t.dataset.target)));
-
-  // ===== Modal open/close =====
-  const openers = document.querySelectorAll('.open-modal');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-
-  function openModal(id){
-    const m = document.getElementById(id);
-    if(!m) return;
-    m.classList.add('show');
-    // Close handlers
-    const closeBtn = m.querySelector('.close');
-    const onBackdrop = (e)=>{ if(e.target === m) closeModal(m); };
-    const onEsc = (e)=>{ if(e.key === 'Escape') closeModal(m); };
-    closeBtn.addEventListener('click', ()=>closeModal(m), {once:true});
-    m.addEventListener('click', onBackdrop, {once:true});
-    document.addEventListener('keydown', onEsc, {once:true});
-    // Setup lightbox on images
-    m.querySelectorAll('.gallery-grid img').forEach(img=>{
-      img.addEventListener('click', ()=>{
-        lightboxImg.src = img.src;
-        lightbox.classList.add('show');
-      });
-    });
-  }
-  function closeModal(m){
-    m.classList.remove('show');
-  }
-
-  openers.forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const id = btn.dataset.modalTarget;
-      openModal(id);
-    });
-  });
-
-  // Lightbox close
-  lightbox.querySelector('.x').addEventListener('click', ()=>lightbox.classList.remove('show'));
-  lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('show'); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('show'); });
-</script>
-
+    // modal toggles
+    document.querySelectorAll('[data-open]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const id = btn.getAttribute('data-open');
+        const el = document.getElementById(id);
+        if(el) el.classList.add('open');
+      })
+    })
+    document.querySelectorAll('[data-close]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        btn.closest('.modal')?.classList.remove('open');
+      })
+    })
+    document.querySelectorAll('.modal').forEach(m=>{
+      m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open') })
+    })
+  </script>
 </body>
 </html>
